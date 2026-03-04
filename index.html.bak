@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio | Ethan Serville</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="logo">Ethan</div>
+        <ul class="nav-links">
+          <li><a href="#accueil">Accueil</a></li>
+          <li><a href="#a-propos">À propos</a></li>
+          <li><a href="#competences">Compétences</a></li>
+          <li><a href="#projets">Projets</a></li>
+          <li><a href="#parcours">Parcours</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="burger">
+          <div class="line1"></div>
+          <div class="line2"></div>
+          <div class="line3"></div>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section id="accueil" class="hero">
+        <div class="hero-content">
+          <h1>Bonjour, je suis <span>Ethan</span></h1>
+          <h2>Étudiant en Informatique</h2>
+          <p>Developper pationner de sport</p>
+          <p class="passions">Développement Web | Sport</p>
+          <a href="#contact" class="btn-primary">Me Contacter</a>
+          <a href="#projets" class="btn-secondary">Voir mes projets</a>
+        </div>
+      </section>
+
+      <section id="a-propos" class="about">
+        <div class="container">
+          <h2 class="section-title">À propos de moi</h2>
+          <div class="about-content">
+            <div class="about-text">
+              <p>
+                Passionné par les possibilitées que le développement nous offre,
+                je cherche toujours à apprendre de nouvelle compétence, que ce
+                soit en resolevant des problemes ou tout simplement en trouvant
+                des solution qui permette de simplifier et rendre plus agréable
+                la vie du quotidier et l'experience des utilisateurs.
+              </p>
+              <p>
+                Ma discipline dans le sport (Calisthenics, Escalade) se reflète
+                dans mon code : rigueur, persévérance et amélioration continue.
+                J'aime créer des solutions qui allient performance et
+                esthétique.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="competences" class="skills">
+        <div class="container">
+          <h2 class="section-title">Mes Compétences</h2>
+          <div class="skills-grid">
+            <div class="skill-card">
+              <h3>Front-End</h3>
+              <p>HTML5, CSS3, JavaScript</p>
+            </div>
+            <div class="skill-card">
+              <h3>Back-end Web</h3>
+              <p>PHP</p>
+            </div>
+            <div class="skill-card">
+              <h3>Programmation</h3>
+              <p>Python, C++</p>
+            </div>
+            <div class="skill-card">
+              <h3>Frameworks & Librairies</h3>
+              <p>React, Angular, Symfony, Bootstrap, Tailwind CSS, Twig</p>
+            </div>
+            <div class="skill-card">
+              <h3>Bases de Données</h3>
+              <p>SQL, PL/SQL</p>
+            </div>
+            <div class="skill-card">
+              <h3>Outils & Devops</h3>
+              <p>Git, VS Code, Linux</p>
+            </div>
+            <div class="skill-card">
+              <h3>Soft Skills</h3>
+              <p>Travail d'équipe, Résolution de problèmes, Autonomie</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="projets" class="projects">
+        <div class="container">
+          <h2 class="section-title">Mes Projets</h2>
+          <div class="projects-grid">
+            <!-- Projet 1 -->
+            <article class="project-card">
+              <div class="project-info">
+                <h3>Portfolio Personnel</h3>
+                <p>Création de ce site vitrine pour présenter mon profil.</p>
+                <div class="tags">
+                  <span>HTML</span>
+                  <span>CSS</span>
+                  <span>JavaScript</span>
+                </div>
+                <a href="#" class="project-link">Voir le code</a>
+                <span class="project-context">Personnel</span>
+              </div>
+            </article>
+            <!-- Projet 2 (Exemple) -->
+            <article class="project-card">
+              <div class="project-info">
+                <h3>Site Web SacreeTech</h3>
+                <p>
+                  Application web pour une association qui organise des
+                  évenements
+                </p>
+                <div class="tags">
+                  <span>PHP</span>
+                  <span>Symfony</span>
+                  <span>Bootstrap</span>
+                </div>
+                <a href="#" class="project-link">Voir le code</a>
+                <span class="project-context">Scolaire</span>
+              </div>
+            </article>
+            <!-- Projet 3 (Exemple) -->
+            <article class="project-card">
+              <div class="project-info">
+                <h3>Stratego (en cours)</h3>
+                <p>
+                  Reproduction du jeu de stratégie au tour par tour. Affrontez
+                  l'adversaire en capturant son drapeau tout en protégeant le
+                  vôtre, avec un système de pièces aux rangs.
+                </p>
+                <div class="tags">
+                  <span>C++</span>
+                </div>
+                <a href="https://github.com/EthanS0107/stratego" class="project-link">Voir le code</a>
+                <span class="project-context">Personnel</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="parcours" class="timeline-section">
+        <div class="container">
+          <h2 class="section-title">Mon Parcours</h2>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-date">2024 - Présent</div>
+              <div class="timeline-content">
+                <h3>Études en Informatique</h3>
+                <p>
+                  BUT Informatique - Apprentissage des fondamentaux du
+                  développement.
+                </p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-date">2022</div>
+              <div class="timeline-content">
+                <h3>Baccalauréat</h3>
+                <p>Spécialités Maths et NSI.</p>
+              </div>
+            </div>
+            <!-- Ajouter d'autres étapes ici -->
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="contact">
+        <div class="container">
+          <h2 class="section-title">Me Contacter</h2>
+          <p>Un projet ? Une question ? N'hésitez pas à m'écrire.</p>
+          <p>Contactez-moi : <a href="tel:+33608756357">+33 6 08 75 63 57</a></p>
+          <form class="contact-form">
+            <div class="form-group">
+              <label for="name">Nom</label>
+              <input type="text" id="name" name="name" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                required
+              ></textarea>
+            </div>
+            <button type="submit" class="btn-primary">Envoyer</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <p>2026 Ethan Serville</p>
+        <div class="socials">
+          <a href="https://linkedin.com/in/ethan-serville">LinkedIn</a> |
+          <a href="https://github.com/EthanS0107">GitHub</a> |
+          <a href="mailto:ethanserville@gmail.com">ethanserville@gmail.com</a> |
+        </div>
+    </footer>
+
+    <script src="scripte.js"></script>
+  </body>
+</html>
