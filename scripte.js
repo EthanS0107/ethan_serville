@@ -265,6 +265,7 @@ const translations = {
     "projects.personal": "Personnel",
     "projects.school": "Scolaire",
     "projects.wip": "Personnel : En cours",
+    "projects.wip.pro": "Professionnel : En cours",
     "projects.portfolio.title": "Portfolio Personnel",
     "projects.portfolio.desc":
       "Création de ce site vitrine pour présenter mon profil et mes compétences.",
@@ -272,6 +273,10 @@ const translations = {
       "Application web pour une association qui organise des événements sportifs et culturels.",
     "projects.stratego.desc":
       "Reproduction du jeu de stratégie au tour par tour. Affrontez l'adversaire en capturant son drapeau tout en protégeant le vôtre, avec un système de pièces aux rangs.",
+    "projects.worldmenu.desc":
+      "Site proposant des idées de menus et des recettes pour partir à la découverte de la culture culinaire du monde entier.",
+    "projects.pacman.desc":
+      "Reproduction du jeu d'arcade Pac-Man avec gestion des fantômes, des niveaux et du score.",
     "journey.title": "Mon Parcours",
     "journey.but.date": "2024 — Présent",
     "journey.but.title": "BUT Informatique",
@@ -318,6 +323,7 @@ const translations = {
     "projects.personal": "Personal",
     "projects.school": "Academic",
     "projects.wip": "Personal: In progress",
+    "projects.wip.pro": "Professional: In progress",
     "projects.portfolio.title": "Personal Portfolio",
     "projects.portfolio.desc":
       "Creation of this showcase website to present my profile and skills.",
@@ -325,6 +331,10 @@ const translations = {
       "Web application for an association that organises sports and cultural events.",
     "projects.stratego.desc":
       "Reproduction of the turn-based strategy game. Challenge your opponent by capturing their flag while protecting yours, with a ranked pieces system.",
+    "projects.worldmenu.desc":
+      "Website offering menu ideas and recipes to explore culinary cultures from around the world.",
+    "projects.pacman.desc":
+      "Reproduction of the classic Pac-Man arcade game with ghost management, levels and score system.",
     "journey.title": "My Journey",
     "journey.but.date": "2024 — Present",
     "journey.but.title": "Bachelor in Computer Science",
