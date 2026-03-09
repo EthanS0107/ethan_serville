@@ -200,16 +200,19 @@ nav {
 }
 
 .logo {
-  font-size: 1.4rem;
-  font-weight: 800;
-  letter-spacing: 2px;
-  color: var(--Bleu-Glacier);
-  font-family: var(--font-heading);
-  transition: color var(--transition-base);
+  display: flex;
+  align-items: center;
 }
 
-.logo:hover {
-  color: var(--Terracotta-Brûlée);
+.logo img {
+  height: 48px;
+  width: auto;
+  display: block;
+  transition: opacity var(--transition-base);
+}
+
+.logo:hover img {
+  opacity: 0.85;
 }
 
 .nav-links {
