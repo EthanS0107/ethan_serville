@@ -464,6 +464,30 @@ nav {
   box-shadow: 0 8px 25px rgba(184, 216, 216, 0.3);
 }
 
+.btn-download {
+  border: 2px solid var(--Terracotta-Brûlée);
+  color: var(--Terracotta-Brûlée);
+  background: transparent;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 32px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all var(--transition-base);
+  cursor: pointer;
+}
+
+.btn-download:hover {
+  background-color: var(--Terracotta-Brûlée);
+  color: var(--White);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(193, 102, 107, 0.4);
+}
+
 /* Scroll indicator */
 .scroll-indicator {
   position: absolute;

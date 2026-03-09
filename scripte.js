@@ -179,11 +179,21 @@ const scrollToTop = () => {
 };
 
 // ============================================
-// FORM — Prevent default & feedback
+// FORM — Envoi via EmailJS
+// 1. Créez un compte sur https://www.emailjs.com/
+// 2. Ajoutez un service Gmail lié à ethanserville@gmail.com
+// 3. Créez un template avec les variables : {{name}}, {{email}}, {{message}}
+// 4. Remplacez les trois constantes ci-dessous par vos identifiants
 // ============================================
+const EMAILJS_PUBLIC_KEY = "KztzUUHvJS21ew28f"; // Account > API Keys
+const EMAILJS_SERVICE_ID = "service_7oy25im"; // Email Services
+const EMAILJS_TEMPLATE_ID = "template_5g2ic0y"; // Email Templates
+
 const contactForm = () => {
   const form = document.querySelector(".contact-form");
   if (!form) return;
+
+  emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
 
   form.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -191,14 +201,34 @@ const contactForm = () => {
     const btn = form.querySelector(".btn-submit");
     const originalHTML = btn.innerHTML;
 
-    btn.innerHTML = '<i class="fas fa-check"></i> Envoyé !';
-    btn.style.background = "#27ae60";
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours...';
+    btn.disabled = true;
 
-    setTimeout(() => {
-      btn.innerHTML = originalHTML;
-      btn.style.background = "";
-      form.reset();
-    }, 2500);
+    emailjs
+      .sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, form)
+      .then(() => {
+        btn.innerHTML = '<i class="fas fa-check"></i> Message envoyé !';
+        btn.style.background = "#27ae60";
+        btn.style.borderColor = "#27ae60";
+        form.reset();
+        setTimeout(() => {
+          btn.innerHTML = originalHTML;
+          btn.style.background = "";
+          btn.style.borderColor = "";
+          btn.disabled = false;
+        }, 3000);
+      })
+      .catch(() => {
+        btn.innerHTML = '<i class="fas fa-times"></i> Erreur, réessayez.';
+        btn.style.background = "#e74c3c";
+        btn.style.borderColor = "#e74c3c";
+        setTimeout(() => {
+          btn.innerHTML = originalHTML;
+          btn.style.background = "";
+          btn.style.borderColor = "";
+          btn.disabled = false;
+        }, 3000);
+      });
   });
 };
 
