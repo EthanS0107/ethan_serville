@@ -831,6 +831,8 @@ section {
   overflow: hidden;
   min-height: 116px;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
 }
 
 .portfolio-card:hover {
@@ -859,9 +861,11 @@ section {
 
 .portfolio-card::after {
   content: "Cliquer pour voir les details";
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  margin-top: 0.72rem;
+  align-self: flex-start;
+  margin-top: auto;
+  padding-top: 0.72rem;
   font-size: 0.69rem;
   font-weight: 700;
   text-transform: uppercase;
