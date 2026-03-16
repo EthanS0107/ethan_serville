@@ -750,29 +750,37 @@ const initShowMoreForSection = ({
 };
 
 const langToggle = () => {
-  const btn = document.getElementById("lang-toggle");
-  if (!btn) return;
+  const buttons = Array.from(document.querySelectorAll(".lang-toggle"));
+  if (!buttons.length) return;
 
-  const updateBtn = () => {
-    if (currentLang === "fr") {
-      btn.querySelector(".lang-fr").style.display = "none";
-      btn.querySelector(".lang-en").style.display = "inline";
-    } else {
-      btn.querySelector(".lang-fr").style.display = "inline";
-      btn.querySelector(".lang-en").style.display = "none";
-    }
+  const updateButtons = () => {
+    buttons.forEach((btn) => {
+      const frLabel = btn.querySelector(".lang-fr");
+      const enLabel = btn.querySelector(".lang-en");
+      if (!frLabel || !enLabel) return;
+
+      if (currentLang === "fr") {
+        frLabel.style.display = "none";
+        enLabel.style.display = "inline";
+      } else {
+        frLabel.style.display = "inline";
+        enLabel.style.display = "none";
+      }
+    });
   };
 
-  updateBtn();
-  applyTranslations(currentLang);
-
-  btn.addEventListener("click", () => {
+  const switchLanguage = () => {
     currentLang = currentLang === "fr" ? "en" : "fr";
     localStorage.setItem("lang", currentLang);
     applyTranslations(currentLang);
-    updateBtn();
+    updateButtons();
     updateShowMoreButtonsLanguage();
-  });
+  };
+
+  updateButtons();
+  applyTranslations(currentLang);
+
+  buttons.forEach((btn) => btn.addEventListener("click", switchLanguage));
 };
 
 // ============================================
