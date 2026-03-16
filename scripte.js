@@ -335,6 +335,8 @@ const translations = {
     "skills.soft.teamwork": "Travail d'équipe",
     "skills.soft.problem": "Résolution de problèmes",
     "skills.soft.autonomy": "Autonomie",
+    "competencies.showMore": "Voir plus de compétences",
+    "competencies.showLess": "Voir moins de compétences",
     "portfolio.title": "Compétences",
     "portfolio.label.context": "Contexte :",
     "portfolio.label.tech": "Techno :",
@@ -429,16 +431,30 @@ const translations = {
     "projects.portfolio.title": "Portfolio Personnel",
     "projects.portfolio.desc":
       "Création de ce site vitrine pour présenter mon profil et mes compétences.",
+    "projects.viewCode": "Voir le code",
+    "projects.sacreetech.title": "Site Web SacreeTech",
     "projects.sacreetech.desc":
       "Application web pour une association qui organise des événements sportifs et culturels.",
+    "projects.stratego.title": "Stratego",
     "projects.stratego.desc":
       "Reproduction du jeu de stratégie au tour par tour. Affrontez l'adversaire en capturant son drapeau tout en protégeant le vôtre, avec un système de pièces aux rangs.",
+    "projects.airhh.title": "AIRHH",
     "projects.airhh.desc":
       "Développement d'un site web pour une agence de communication.",
+    "projects.afleuro.title": "A Fleur d'Ô",
+    "projects.afleuro.desc":
+      "Développement d'un site web pour un fleuriste local, mettant en avant leurs produits et services.",
+    "projects.valois.title": "Valois Nettoyage",
+    "projects.valois.desc":
+      "Développement d'un site web pour une entreprise de nettoyage, présentant leurs services et permettant aux clients de les contacter facilement.",
+    "projects.worldmenu.title": "World Menu",
     "projects.worldmenu.desc":
       "Site proposant des idées de menus et des recettes pour partir à la découverte de la culture culinaire du monde entier.",
+    "projects.pacman.title": "Pac-Man",
     "projects.pacman.desc":
       "Reproduction du jeu d'arcade Pac-Man avec gestion des fantômes, des niveaux et du score.",
+    "projects.showMore": "Voir plus de projets",
+    "projects.showLess": "Voir moins de projets",
     "journey.title": "Mon Parcours",
     "journey.but.date": "2024 — Présent",
     "journey.but.title": "BUT Informatique",
@@ -481,6 +497,8 @@ const translations = {
     "skills.soft.teamwork": "Teamwork",
     "skills.soft.problem": "Problem solving",
     "skills.soft.autonomy": "Autonomy",
+    "competencies.showMore": "Show more skills",
+    "competencies.showLess": "Show fewer skills",
     "portfolio.title": "Skills",
     "portfolio.label.context": "Context:",
     "portfolio.label.tech": "Technologies:",
@@ -572,16 +590,30 @@ const translations = {
     "projects.portfolio.title": "Personal Portfolio",
     "projects.portfolio.desc":
       "Creation of this showcase website to present my profile and skills.",
+    "projects.viewCode": "View code",
+    "projects.sacreetech.title": "SacreeTech Website",
     "projects.sacreetech.desc":
       "Web application for an association that organises sports and cultural events.",
+    "projects.stratego.title": "Stratego",
     "projects.stratego.desc":
       "Reproduction of the turn-based strategy game. Challenge your opponent by capturing their flag while protecting yours, with a ranked pieces system.",
+    "projects.airhh.title": "AIRHH",
     "projects.airhh.desc":
       "Development of a website for a communication agency.",
+    "projects.afleuro.title": "A Fleur d'O",
+    "projects.afleuro.desc":
+      "Development of a website for a local florist, showcasing products and services.",
+    "projects.valois.title": "Valois Cleaning",
+    "projects.valois.desc":
+      "Development of a website for a cleaning company, presenting its services and helping clients get in touch easily.",
+    "projects.worldmenu.title": "World Menu",
     "projects.worldmenu.desc":
       "Website offering menu ideas and recipes to explore culinary cultures from around the world.",
+    "projects.pacman.title": "Pac-Man",
     "projects.pacman.desc":
       "Reproduction of the classic Pac-Man arcade game with ghost management, levels and score system.",
+    "projects.showMore": "Show more projects",
+    "projects.showLess": "Show fewer projects",
     "journey.title": "My Journey",
     "journey.but.date": "2024 — Present",
     "journey.but.title": "Bachelor in Computer Science",
@@ -607,6 +639,7 @@ const typingWords = {
 };
 
 let currentLang = localStorage.getItem("lang") || "fr";
+const showMoreControllers = [];
 
 const applyTranslations = (lang) => {
   document.querySelectorAll("[data-i18n]").forEach((el) => {
@@ -618,6 +651,102 @@ const applyTranslations = (lang) => {
     if (translations[lang][key]) el.placeholder = translations[lang][key];
   });
   document.documentElement.lang = lang;
+};
+
+const updateShowMoreButtonsLanguage = () => {
+  showMoreControllers.forEach((updateLabel) => updateLabel());
+};
+
+const initShowMoreForSection = ({
+  gridSelector,
+  itemSelector,
+  buttonSelector,
+  sectionKey,
+  maxVisible = 6,
+}) => {
+  const grid = document.querySelector(gridSelector);
+  const button = document.querySelector(buttonSelector);
+  if (!grid || !button) return;
+
+  const items = Array.from(grid.querySelectorAll(itemSelector));
+  const hideTimers = new WeakMap();
+  if (items.length <= maxVisible) {
+    button.style.display = "none";
+    return;
+  }
+
+  let expanded = false;
+
+  const updateLabel = () => {
+    const key = expanded ? `${sectionKey}.showLess` : `${sectionKey}.showMore`;
+    const fallback = expanded ? "Voir moins" : "Voir plus";
+    button.textContent = translations[currentLang]?.[key] || fallback;
+    button.setAttribute("aria-expanded", expanded ? "true" : "false");
+  };
+
+  const updateVisibility = ({ animateCollapse = false } = {}) => {
+    items.forEach((item, index) => {
+      const wasHidden = item.classList.contains("is-hidden-by-limit");
+      const existingTimer = hideTimers.get(item);
+
+      if (existingTimer) {
+        clearTimeout(existingTimer);
+        hideTimers.delete(item);
+      }
+
+      if (!expanded && index >= maxVisible) {
+        item.classList.remove("show-more-enter");
+
+        if (animateCollapse && !wasHidden) {
+          const reverseIndex = items.length - 1 - index;
+          const delay = Math.max(reverseIndex, 0) * 35;
+
+          item.style.setProperty("--show-more-delay", `${delay}ms`);
+          item.classList.add("show-more-exit");
+
+          const timer = setTimeout(() => {
+            item.classList.add("is-hidden-by-limit");
+            item.classList.remove("show-more-exit");
+            item.style.removeProperty("--show-more-delay");
+            hideTimers.delete(item);
+          }, 280 + delay);
+
+          hideTimers.set(item, timer);
+        } else {
+          item.classList.add("is-hidden-by-limit");
+          item.classList.remove("show-more-exit");
+          item.style.removeProperty("--show-more-delay");
+        }
+      } else {
+        item.classList.remove("is-hidden-by-limit");
+        item.classList.remove("show-more-exit");
+
+        if (expanded && wasHidden) {
+          const delay = Math.max(index - maxVisible, 0) * 55;
+          item.style.setProperty("--show-more-delay", `${delay}ms`);
+          item.classList.add("show-more-enter");
+
+          const cleanupAnimationClass = () => {
+            item.classList.remove("show-more-enter");
+            item.style.removeProperty("--show-more-delay");
+            item.removeEventListener("animationend", cleanupAnimationClass);
+          };
+
+          item.addEventListener("animationend", cleanupAnimationClass);
+        }
+      }
+    });
+    updateLabel();
+  };
+
+  button.addEventListener("click", () => {
+    const wasExpanded = expanded;
+    expanded = !expanded;
+    updateVisibility({ animateCollapse: wasExpanded && !expanded });
+  });
+
+  showMoreControllers.push(updateLabel);
+  updateVisibility({ animateCollapse: false });
 };
 
 const langToggle = () => {
@@ -642,6 +771,7 @@ const langToggle = () => {
     localStorage.setItem("lang", currentLang);
     applyTranslations(currentLang);
     updateBtn();
+    updateShowMoreButtonsLanguage();
   });
 };
 
@@ -664,6 +794,20 @@ document.addEventListener("DOMContentLoaded", () => {
   navSlide();
   headerScroll();
   activeNavOnScroll();
+  initShowMoreForSection({
+    gridSelector: ".portfolio-grid",
+    itemSelector: ".portfolio-card",
+    buttonSelector: "#competencies-show-more",
+    sectionKey: "competencies",
+    maxVisible: 6,
+  });
+  initShowMoreForSection({
+    gridSelector: ".projects-grid",
+    itemSelector: ".project-card",
+    buttonSelector: "#projects-show-more",
+    sectionKey: "projects",
+    maxVisible: 6,
+  });
   scrollReveal();
   typingEffect();
   scrollToTop();
