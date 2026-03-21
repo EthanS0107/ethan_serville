@@ -428,8 +428,34 @@ nav {
   transform: translate(-50%, -50%) rotate(-45deg);
 }
 
+/* Affiché par défaut sur mobile/tablette, masqué sur desktop */
 .nav-lang-item {
   display: none;
+}
+
+@media screen and (max-width: 1060px) {
+  .nav-lang-item {
+    display: block;
+    width: 100%;
+    opacity: 0;
+    transform: translateX(30px);
+    transition:
+      opacity 0.35s ease,
+      transform 0.35s ease;
+    margin-bottom: 0.35rem;
+    order: -1;
+  }
+  .nav-links.nav-active .nav-lang-item {
+    opacity: 1;
+    transform: translateX(0);
+    transition-delay: 0.06s;
+  }
+  .lang-toggle-menu {
+    margin-top: 0;
+    width: calc(100% - 4.4rem);
+    justify-content: center;
+    display: flex;
+  }
 }
 
 .lang-toggle-menu {
@@ -2540,7 +2566,7 @@ footer p {
 /* ============================================
    RESPONSIVE
    ============================================ */
-@media screen and (max-width: 1160px) and (min-width: 801px) {
+@media screen and (max-width: 1360px) and (min-width: 801px) {
   nav {
     padding: 0 3.25%;
     min-height: 72px;
@@ -2723,7 +2749,7 @@ footer p {
   }
 }
 
-@media screen and (max-width: 1160px) and (min-width: 801px) and (orientation: landscape) {
+@media screen and (max-width: 1360px) and (min-width: 801px) and (orientation: landscape) {
   .nav-links {
     width: min(56vw, 380px);
     padding: 5.2rem 0 1.6rem;
@@ -2761,7 +2787,7 @@ footer p {
   }
 }
 
-@media screen and (max-width: 1160px) and (min-width: 801px) and (orientation: portrait) {
+@media screen and (max-width: 1360px) and (min-width: 801px) and (orientation: portrait) {
   .nav-links {
     width: min(68vw, 470px);
     padding: 6.8rem 0 2.8rem;
