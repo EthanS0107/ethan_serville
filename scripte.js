@@ -692,6 +692,7 @@ const translations = {
     "nav.skills": "Compétences",
     "nav.projects": "Projets",
     "nav.journey": "Parcours",
+    "nav.passion": "Sport",
     "nav.contact": "Contact",
     "hero.subtitle": "Étudiant en Informatique",
     "hero.cta.contact": "Me Contacter",
@@ -702,6 +703,23 @@ const translations = {
       "Passionné par les possibilités que le développement nous offre, je cherche toujours à apprendre de nouvelles compétences, que ce soit en résolvant des problèmes ou tout simplement en trouvant des solutions qui permettent de simplifier et rendre plus agréable la vie du quotidien et l'expérience des utilisateurs.",
     "about.p2":
       "Ma discipline dans le sport (Calisthenics, Escalade) se reflète dans mon code : rigueur, persévérance et amélioration continue. J'aime créer des solutions qui allient performance et esthétique.",
+    "about.sportLink": "Voir ma section sport",
+    "passion.title": "Mon terrain de jeu",
+    "passion.intro":
+      "L'escalade et la calisthenics nourrissent mon mental : précision, contrôle et progression continue.",
+    "passion.climb.title": "Escalade",
+    "passion.climb.desc":
+      "Chaque voie m'apprend à rester calme, lire les mouvements et faire confiance au processus, même quand la prise suivante semble loin.",
+    "passion.calisthenics.title": "Calisthenics",
+    "passion.calisthenics.desc":
+      "Cette discipline développe force utile, maîtrise du corps et régularité. C'est ma manière de transformer la constance en résultats concrets.",
+    "passion.quote":
+      "Ce que je construis en sport, je l'applique dans mon code.",
+    "passion.tag1": "Discipline",
+    "passion.tag2": "Progression",
+    "passion.tag3": "Concentration",
+    "passion.tag4": "Dépassement",
+    "passion.instagram": "Voir mon compte Instagram sport",
     "skills.title": "Compétences",
     "stack.title": "Stack technique",
     "skills.frameworks": "Frameworks & Librairies",
@@ -833,6 +851,7 @@ const translations = {
     "nav.skills": "Skills",
     "nav.projects": "Projects",
     "nav.journey": "Journey",
+    "nav.passion": "Sport",
     "nav.contact": "Contact",
     "hero.greeting": "I'm",
     "hero.subtitle": "Computer Science Student",
@@ -844,6 +863,22 @@ const translations = {
       "Passionate about the possibilities that development offers, I always strive to learn new skills, whether by solving problems or simply finding solutions that simplify everyday life and improve user experience.",
     "about.p2":
       "My discipline in sport (Calisthenics, Climbing) is reflected in my code: rigor, perseverance and continuous improvement. I love creating solutions that combine performance and aesthetics.",
+    "about.sportLink": "View my sport section",
+    "passion.title": "My training ground",
+    "passion.intro":
+      "Climbing and calisthenics shape my mindset: precision, control, and constant progress.",
+    "passion.climb.title": "Climbing",
+    "passion.climb.desc":
+      "Each route teaches me to stay calm, read movement, and trust the process, even when the next hold looks out of reach.",
+    "passion.calisthenics.title": "Calisthenics",
+    "passion.calisthenics.desc":
+      "This discipline builds useful strength, body control, and consistency. It is how I turn routine effort into concrete results.",
+    "passion.quote": "What I build in sport, I apply in my code.",
+    "passion.tag1": "Discipline",
+    "passion.tag2": "Progress",
+    "passion.tag3": "Focus",
+    "passion.tag4": "Self-improvement",
+    "passion.instagram": "See my sport Instagram account",
     "skills.title": "Skills",
     "stack.title": "Tech Stack",
     "skills.frameworks": "Frameworks & Libraries",
@@ -1126,6 +1161,157 @@ const langToggle = () => {
 };
 
 // ============================================
+// SPORT COLLAGE MARQUEE — Auto-scroll tablet/mobile
+// ============================================
+const initSportCollageMarquee = () => {
+  const collage = document.querySelector(".sport-collage");
+  if (!collage) return;
+
+  const tabletMobileQuery = window.matchMedia("(max-width: 1160px)");
+  const reduceMotionQuery = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  );
+
+  const baseHtml = collage.innerHTML;
+  let loopWidth = 0;
+  let track = null;
+  let firstGroup = null;
+  let animationFrameId = null;
+  let lastTimestamp = 0;
+  let offset = 0;
+  let minOffset = 0;
+  let maxOffset = 0;
+
+  const buildTrack = () => {
+    collage.innerHTML = "";
+    track = document.createElement("div");
+    track.className = "sport-collage-track";
+
+    const makeGroup = ({ isClone = false } = {}) => {
+      const group = document.createElement("div");
+      group.className = "sport-collage-group";
+      group.innerHTML = baseHtml;
+
+      if (isClone) {
+        group.querySelectorAll(".sport-shot").forEach((shot) => {
+          shot.setAttribute("data-clone", "true");
+          shot.setAttribute("aria-hidden", "true");
+        });
+      }
+
+      return group;
+    };
+
+    firstGroup = makeGroup({ isClone: false });
+    track.appendChild(firstGroup);
+
+    for (let i = 0; i < 5; i++) {
+      track.appendChild(makeGroup({ isClone: true }));
+    }
+
+    collage.appendChild(track);
+  };
+
+  const restoreOriginalMarkup = () => {
+    collage.innerHTML = baseHtml;
+    track = null;
+    firstGroup = null;
+    if (animationFrameId) {
+      window.cancelAnimationFrame(animationFrameId);
+      animationFrameId = null;
+    }
+    lastTimestamp = 0;
+    offset = 0;
+    minOffset = 0;
+    maxOffset = 0;
+  };
+
+  const updateMarqueeMetrics = () => {
+    if (!track || !firstGroup) {
+      loopWidth = 0;
+      return;
+    }
+
+    loopWidth = firstGroup.scrollWidth;
+    if (loopWidth > 0) {
+      minOffset = loopWidth * 2;
+      maxOffset = loopWidth * 3;
+      if (offset < minOffset || offset > maxOffset) {
+        offset = minOffset;
+      }
+      track.style.transform = `translate3d(${-offset}px, 0, 0)`;
+    }
+  };
+
+  const animate = (timestamp) => {
+    if (!animationFrameId) return;
+
+    if (!lastTimestamp) {
+      lastTimestamp = timestamp;
+    }
+
+    const delta = Math.min(timestamp - lastTimestamp, 34);
+    lastTimestamp = timestamp;
+
+    if (loopWidth > 0 && track) {
+      const speed = window.innerWidth <= 980 ? 42 : 52;
+      offset += (speed * delta) / 1000;
+
+      if (offset >= maxOffset) {
+        offset -= loopWidth;
+      }
+
+      track.style.transform = `translate3d(${-offset}px, 0, 0)`;
+    }
+
+    animationFrameId = window.requestAnimationFrame(animate);
+  };
+
+  const stopAnimation = () => {
+    loopWidth = 0;
+    collage.classList.remove("is-auto-scrolling");
+    restoreOriginalMarkup();
+  };
+
+  const startAnimation = () => {
+    if (!tabletMobileQuery.matches || reduceMotionQuery.matches) {
+      stopAnimation();
+      return;
+    }
+
+    restoreOriginalMarkup();
+    buildTrack();
+    updateMarqueeMetrics();
+    collage.classList.add("is-auto-scrolling");
+
+    if (animationFrameId) {
+      window.cancelAnimationFrame(animationFrameId);
+    }
+    lastTimestamp = 0;
+    animationFrameId = window.requestAnimationFrame(animate);
+  };
+
+  const refreshAnimation = () => {
+    if (!tabletMobileQuery.matches || reduceMotionQuery.matches) {
+      stopAnimation();
+      return;
+    }
+
+    startAnimation();
+  };
+
+  window.addEventListener("resize", () => {
+    if (!tabletMobileQuery.matches || reduceMotionQuery.matches) return;
+    updateMarqueeMetrics();
+  });
+
+  tabletMobileQuery.addEventListener("change", refreshAnimation);
+  reduceMotionQuery.addEventListener("change", refreshAnimation);
+
+  refreshAnimation();
+};
+
+// ============================================
 // EMAIL VALIDATION — Vérifier les adresses e-mail
 // ============================================
 const isValidEmail = (email) => {
@@ -1166,6 +1352,7 @@ document.addEventListener("DOMContentLoaded", () => {
   langToggle();
   competencyCardsInteraction();
   initProjectCarousels();
+  initSportCollageMarquee();
   updateProjectCarouselLabels();
 });
 

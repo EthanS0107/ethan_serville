@@ -52,7 +52,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 80px;
+  scroll-padding-top: 88px;
 }
 
 body {
@@ -661,6 +661,23 @@ section {
   padding: var(--section-padding);
 }
 
+#a-propos,
+#passion-sport,
+#tech-stack,
+#competences,
+#projets,
+#parcours,
+#contact {
+  scroll-margin-top: 82px;
+}
+
+#projets,
+#parcours,
+#passion-sport,
+#contact {
+  scroll-margin-top: 68px;
+}
+
 /* ============================================
    ABOUT SECTION
    ============================================ */
@@ -746,10 +763,375 @@ section {
   line-height: 1.9;
 }
 
+.about-sport-link-wrap {
+  margin-top: -0.5rem;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.about-sport-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border: 1px solid rgba(44, 62, 80, 0.25);
+  background: rgba(184, 216, 216, 0.2);
+  color: var(--Ardoise-Profonde);
+  border-radius: 999px;
+  padding: 0.5rem 0.95rem;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  transition: all var(--transition-base);
+}
+
+.about-sport-link:hover {
+  transform: translateY(-2px);
+  color: var(--White);
+  background: var(--Ardoise-Profonde);
+  border-color: var(--Ardoise-Profonde);
+}
+
 .about-icon {
   color: var(--Terracotta-Brûlée);
   margin-right: 6px;
   font-size: 1.1rem;
+}
+
+/* ============================================
+   PASSION SPORT SECTION
+   ============================================ */
+.sport-passion {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(6.8rem, 10vw, 8.9rem) 0 clamp(10rem, 14vw, 14rem);
+  background:
+    radial-gradient(
+      circle at 10% 18%,
+      rgba(184, 216, 216, 0.45),
+      transparent 45%
+    ),
+    radial-gradient(
+      circle at 88% 82%,
+      rgba(193, 102, 107, 0.16),
+      transparent 46%
+    ),
+    linear-gradient(165deg, #edf4f4 0%, #f7f8f9 100%);
+}
+
+.sport-passion .container {
+  position: relative;
+}
+
+.sport-passion::before {
+  content: "";
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  right: -120px;
+  top: -120px;
+  border-radius: 50%;
+  border: 1px solid rgba(44, 62, 80, 0.12);
+  opacity: 0.5;
+}
+
+.sport-intro {
+  max-width: 760px;
+  margin: 0 auto 2rem;
+  text-align: center;
+  font-size: 1.05rem;
+  color: #405163;
+}
+
+.sport-layout {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.2rem;
+  z-index: 2;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding-bottom: clamp(7.8rem, 10vw, 10.5rem);
+}
+
+.sport-collage {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.sport-shot {
+  position: absolute;
+  width: clamp(106px, 12.5vw, 172px);
+  aspect-ratio: 4 / 5.2;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  box-shadow:
+    0 14px 28px rgba(44, 62, 80, 0.16),
+    0 6px 12px rgba(22, 48, 43, 0.12);
+  opacity: 0.94;
+}
+
+.sport-shot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.sport-shot-1 {
+  top: 0;
+  left: -138px;
+  transform: rotate(-10deg);
+}
+
+.sport-shot-2 {
+  top: 120px;
+  left: -48px;
+  transform: rotate(7deg);
+  z-index: 3;
+}
+
+.sport-shot-3 {
+  top: 2px;
+  right: -42px;
+  transform: rotate(-7deg);
+}
+
+.sport-shot-4 {
+  top: 128px;
+  right: -138px;
+  transform: rotate(10deg);
+  z-index: 3;
+}
+
+.sport-shot-5 {
+  top: 316px;
+  right: -108px;
+  transform: rotate(-8deg);
+}
+
+.sport-shot-6 {
+  top: 322px;
+  left: -118px;
+  transform: rotate(6deg);
+}
+
+.sport-shot-7 {
+  top: 568px;
+  left: -148px;
+  transform: rotate(-9deg);
+  z-index: 3;
+}
+
+.sport-shot-8 {
+  top: 580px;
+  right: -146px;
+  transform: rotate(8deg);
+}
+
+.sport-shot-9 {
+  top: 604px;
+  left: 4%;
+  transform: rotate(-6deg);
+}
+
+.sport-shot-10 {
+  top: 612px;
+  right: 4%;
+  transform: rotate(6deg);
+}
+
+.sport-shot-placeholder {
+  border: 2px dashed rgba(44, 62, 80, 0.3);
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.92),
+    rgba(228, 236, 240, 0.92)
+  );
+  display: grid;
+  place-items: center;
+}
+
+.sport-shot-label {
+  font-family: var(--font-heading);
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #4e6072;
+  padding: 0.45rem 0.65rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(44, 62, 80, 0.15);
+}
+
+@keyframes sport-marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+.sport-card {
+  border-radius: 22px;
+  padding: 1.35rem;
+  border: 1px solid rgba(44, 62, 80, 0.13);
+  box-shadow: 0 10px 30px rgba(44, 62, 80, 0.1);
+  transition:
+    transform var(--transition-base),
+    box-shadow var(--transition-base),
+    border-color var(--transition-base);
+}
+
+.sport-card-top {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.8rem;
+}
+
+.sport-card h3 {
+  margin-bottom: 0;
+}
+
+.sport-card p {
+  margin: 0;
+  line-height: 1.75;
+  color: #3d4e5f;
+}
+
+.sport-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--White);
+  font-size: 1.1rem;
+}
+
+.sport-card-climb {
+  background: linear-gradient(150deg, rgba(255, 255, 255, 0.96), #ecf5f5 90%);
+  transform: rotate(-1.8deg) translateX(-5px);
+}
+
+.sport-card-climb .sport-icon {
+  background: linear-gradient(145deg, #1f4b44, #2a7064);
+}
+
+.sport-card-calisthenics {
+  background: linear-gradient(150deg, rgba(255, 255, 255, 0.96), #f8efed 95%);
+  transform: rotate(1.3deg) translateY(8px);
+}
+
+.sport-card-calisthenics .sport-icon {
+  background: linear-gradient(145deg, #aa565b, #c1666b);
+}
+
+.sport-card:hover {
+  transform: translateY(-5px) rotate(0deg);
+  border-color: rgba(193, 102, 107, 0.28);
+  box-shadow: 0 16px 34px rgba(44, 62, 80, 0.15);
+}
+
+.sport-mantra {
+  grid-column: 1 / -1;
+  margin-top: 0.45rem;
+  background: rgba(44, 62, 80, 0.95);
+  color: var(--White);
+  border-radius: 18px;
+  padding: 1.2rem;
+  box-shadow: 0 14px 28px rgba(32, 44, 58, 0.2);
+}
+
+.sport-mantra-quote {
+  margin: 0 0 0.85rem;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  letter-spacing: 0.4px;
+}
+
+.sport-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.sport-tags li {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.86rem;
+  letter-spacing: 0.35px;
+}
+
+.sport-social-row {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  margin-top: 0.4rem;
+  margin-bottom: 0.2rem;
+}
+
+.sport-insta-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  background: rgba(22, 32, 45, 0.62);
+  color: #ffffff;
+  border-radius: 16px;
+  padding: 0.62rem 1.06rem;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 0.78rem;
+  letter-spacing: 0.85px;
+  text-transform: uppercase;
+  box-shadow:
+    0 8px 20px rgba(8, 17, 28, 0.32),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  transition:
+    transform var(--transition-base),
+    box-shadow var(--transition-base),
+    filter var(--transition-base),
+    border-color var(--transition-base);
+  overflow: hidden;
+}
+
+.sport-insta-link i {
+  font-size: 1.02rem;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.45));
+}
+
+.sport-insta-link span {
+  color: #ffffff;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.45);
+}
+
+.sport-insta-link::before,
+.sport-insta-link::after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.sport-insta-link:hover {
+  transform: translateY(-2px);
+  filter: none;
+  background: rgba(22, 32, 45, 0.82);
+  border-color: rgba(255, 255, 255, 0.62);
+  box-shadow:
+    0 12px 26px rgba(8, 17, 28, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 /* ============================================
@@ -902,8 +1284,16 @@ section {
   #competences,
   #projets,
   #parcours,
+  #passion-sport,
   #contact {
-    scroll-margin-top: 110px;
+    scroll-margin-top: 90px;
+  }
+
+  #projets,
+  #parcours,
+  #passion-sport,
+  #contact {
+    scroll-margin-top: 76px;
   }
 }
 
@@ -1067,7 +1457,219 @@ html[lang="en"] .portfolio-card::after {
   }
 }
 
+@media screen and (max-width: 1160px) and (min-width: 981px) {
+  .sport-passion {
+    padding: 7.2rem 0 7.6rem;
+  }
+
+  .sport-layout {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    max-width: 860px;
+    padding-bottom: 0;
+  }
+
+  .sport-card-climb,
+  .sport-card-calisthenics {
+    transform: none;
+  }
+
+  .sport-social-row {
+    margin-top: 0.3rem;
+    margin-bottom: 0.1rem;
+  }
+
+  .sport-insta-link {
+    width: min(100%, 430px);
+    justify-content: center;
+  }
+
+  .sport-collage {
+    position: relative;
+    inset: auto;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0.5rem 0.4rem 0.9rem;
+    margin: 0 0 1rem;
+    min-height: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(44, 62, 80, 0.4) transparent;
+  }
+
+  .sport-collage-track {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    width: max-content;
+    will-change: transform;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+
+  .sport-collage.is-auto-scrolling .sport-collage-track {
+    animation: none;
+  }
+
+  .sport-collage-group {
+    display: flex;
+    align-items: center;
+    gap: 0;
+  }
+
+  .sport-collage.is-auto-scrolling {
+    overflow-x: hidden;
+  }
+
+  .sport-collage::-webkit-scrollbar {
+    height: 7px;
+  }
+
+  .sport-collage::-webkit-scrollbar-thumb {
+    background: rgba(44, 62, 80, 0.35);
+    border-radius: 999px;
+  }
+
+  .sport-collage.is-auto-scrolling::-webkit-scrollbar {
+    display: none;
+  }
+
+  .sport-shot {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    flex: 0 0 128px;
+    width: 128px;
+    aspect-ratio: 4 / 5.2;
+  }
+
+  .sport-shot:nth-child(odd) {
+    transform: rotate(-4deg) translateY(4px);
+  }
+
+  .sport-shot:nth-child(even) {
+    transform: rotate(4deg) translateY(-3px);
+  }
+
+  .sport-shot + .sport-shot {
+    margin-left: -4px;
+  }
+}
+
 @media screen and (max-width: 980px) {
+  .sport-passion {
+    padding: 6.2rem 0 6.8rem;
+  }
+
+  .sport-layout {
+    grid-template-columns: 1fr;
+    gap: 0.9rem;
+    padding-bottom: 0;
+  }
+
+  .sport-card-climb,
+  .sport-card-calisthenics {
+    transform: none;
+  }
+
+  .sport-social-row {
+    margin-top: 0.2rem;
+    margin-bottom: 0.1rem;
+  }
+
+  .sport-insta-link {
+    width: 100%;
+    justify-content: center;
+    font-size: 0.74rem;
+    letter-spacing: 0.7px;
+    padding: 0.58rem 0.9rem;
+  }
+
+  .sport-mantra {
+    margin-top: 0.1rem;
+  }
+
+  .sport-collage {
+    position: relative;
+    inset: auto;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0.45rem 0.15rem 0.8rem;
+    margin: 0 0 0.95rem;
+    min-height: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(44, 62, 80, 0.35) transparent;
+  }
+
+  .sport-collage-track {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    width: max-content;
+    will-change: transform;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+
+  .sport-collage.is-auto-scrolling .sport-collage-track {
+    animation: none;
+  }
+
+  .sport-collage-group {
+    display: flex;
+    align-items: center;
+    gap: 0;
+  }
+
+  .sport-collage.is-auto-scrolling {
+    overflow-x: hidden;
+  }
+
+  .sport-collage::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  .sport-collage::-webkit-scrollbar-thumb {
+    background: rgba(44, 62, 80, 0.3);
+    border-radius: 999px;
+  }
+
+  .sport-collage.is-auto-scrolling::-webkit-scrollbar {
+    display: none;
+  }
+
+  .sport-shot {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    flex: 0 0 clamp(96px, 30vw, 124px);
+    width: clamp(96px, 30vw, 124px);
+    aspect-ratio: 1 / 1.14;
+  }
+
+  .sport-shot:nth-child(odd) {
+    transform: rotate(-3deg) translateY(3px);
+  }
+
+  .sport-shot:nth-child(even) {
+    transform: rotate(3deg) translateY(-2px);
+  }
+
+  .sport-shot + .sport-shot {
+    margin-left: -3px;
+  }
+
   .about-content {
     grid-template-columns: 1fr;
     gap: 1.8rem;
@@ -2048,8 +2650,7 @@ footer p {
     width: 78%;
     max-width: 320px;
     background: linear-gradient(
-      .project-carousel {aspect-ratio: 16 / 11;} .project-carousel-btn
-        {width: 38px; height: 38px;} 160deg,
+      160deg,
       #1e2d3d 0%,
       var(--Ardoise-Profonde) 55%,
       #1a1f2c 100%
