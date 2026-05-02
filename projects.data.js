@@ -302,7 +302,43 @@ window.portfolioProjectsConfig = {
         targetBlank: true,
         label: { fr: "Voir le site", en: "View site" },
       },
-      images: [],
+      images: [
+        {
+          src: "assets/projects/myboostlocal-1.png",
+          alt: {
+            fr: "Aperçu de MyBoostLocal avec présentation des services et blocs métier",
+            en: "MyBoostLocal preview with services and business sections",
+          },
+        },
+        {
+          src: "assets/projects/myboostlocal-2.png",
+          alt: {
+            fr: "Aperçu de MyBoostLocal avec présentation des services et blocs métier",
+            en: "MyBoostLocal preview with services and business sections",
+          },
+        },
+        {
+          src: "assets/projects/myboostlocal-3.png",
+          alt: {
+            fr: "Aperçu de MyBoostLocal avec présentation des services et blocs métier",
+            en: "MyBoostLocal preview with services and business sections",
+          },
+        },
+        {
+          src: "assets/projects/myboostlocal-4.png",
+          alt: {
+            fr: "Aperçu de MyBoostLocal avec présentation des services et blocs métier",
+            en: "MyBoostLocal preview with services and business sections",
+          },
+        },
+        {
+          src: "assets/projects/myboostlocal-5.png",
+          alt: {
+            fr: "Aperçu de MyBoostLocal avec présentation des services et blocs métier",
+            en: "MyBoostLocal preview with services and business sections",
+          },
+        },
+      ],
     },
   ],
 };
