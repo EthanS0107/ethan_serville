@@ -258,6 +258,7 @@ window.portfolioProjectsConfig = {
         },
       ],
     },
+    /*
     {
       context: { fr: "Personnel : En cours", en: "Personal: In progress" },
       contextClassName: "badge-wip",
@@ -274,6 +275,7 @@ window.portfolioProjectsConfig = {
       },
       images: [],
     },
+    */
     {
       context: { fr: "Personnel", en: "Personal" },
       title: { fr: "Pac-Man", en: "Pac-Man" },
