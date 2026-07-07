@@ -127,6 +127,7 @@ window.portfolioProjectsConfig = {
       },
       images: [],
     },
+    /*
     {
       context: {
         fr: "Professionnel : En cours",
@@ -175,6 +176,7 @@ window.portfolioProjectsConfig = {
         },
       ],
     },
+    */
     /*
     {
       context: {
@@ -230,7 +232,7 @@ window.portfolioProjectsConfig = {
       },
       tags: ["JS", "React"],
       link: {
-        href: "https://valois-nettoyage.myboostlocal.com/",
+        href: "https://valoisnettoyage.fr/",
         targetBlank: true,
         label: { fr: "Voir le site", en: "View site" },
       },
