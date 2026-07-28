@@ -24,6 +24,47 @@ window.portfolioProjectsConfig = {
   },
   projects: [
     {
+      context: {
+        fr: "Professionnel : En cours",
+        en: "Professional: In progress",
+      },
+      contextClassName: "badge-wip",
+      title: { fr: "Hooksave", en: "Hooksave" },
+      description: {
+        fr: "SaaS qui aide les e-commerçants Shopify à récupérer leurs paniers abandonnés grâce à des SMS personnalisés générés par IA, avec suivi du chiffre d'affaires récupéré et conformité RGPD.",
+        en: "SaaS helping Shopify merchants recover abandoned carts through AI-generated personalised SMS, with recovered revenue tracking and GDPR compliance.",
+      },
+      tags: ["Shopify", "SaaS", "API Claude"],
+      link: {
+        href: "https://hooksave.com/",
+        targetBlank: true,
+        label: { fr: "Voir le site", en: "View site" },
+      },
+      images: [
+        {
+          src: "assets/projects/hooksave-1.png",
+          alt: {
+            fr: "Aperçu du site Hooksave",
+            en: "Hooksave website preview",
+          },
+        },
+        {
+          src: "assets/projects/hooksave-2.png",
+          alt: {
+            fr: "Aperçu du site Hooksave",
+            en: "Hooksave website preview",
+          },
+        },
+        {
+          src: "assets/projects/hooksave-3.png",
+          alt: {
+            fr: "Aperçu du dashboard Hooksave",
+            en: "Hooksave dashboard preview",
+          },
+        },
+      ],
+    },
+    {
       context: { fr: "Personnel", en: "Personal" },
       title: { fr: "Portfolio Personnel", en: "Personal Portfolio" },
       description: {
