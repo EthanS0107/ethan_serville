@@ -111,22 +111,7 @@ window.portfolioProjectsConfig = {
         },
       ],
     },
-    {
-      context: { fr: "Personnel : En cours", en: "Personal: In progress" },
-      contextClassName: "badge-wip",
-      title: { fr: "Stratego", en: "Stratego" },
-      description: {
-        fr: "Reproduction du jeu de stratégie au tour par tour. Affrontez l'adversaire en capturant son drapeau tout en protégeant le vôtre, avec un système de pièces aux rangs.",
-        en: "Reproduction of the turn-based strategy game. Challenge your opponent by capturing their flag while protecting yours, with a ranked pieces system.",
-      },
-      tags: ["C++"],
-      link: {
-        href: "https://github.com/EthanS0107/stratego",
-        targetBlank: true,
-        label: { fr: "Voir le code", en: "View code" },
-      },
-      images: [],
-    },
+
     /*
     {
       context: {
@@ -342,6 +327,22 @@ window.portfolioProjectsConfig = {
           },
         },
       ],
+    },
+    {
+      context: { fr: "Personnel : En cours", en: "Personal: In progress" },
+      contextClassName: "badge-wip",
+      title: { fr: "Stratego", en: "Stratego" },
+      description: {
+        fr: "Reproduction du jeu de stratégie au tour par tour. Affrontez l'adversaire en capturant son drapeau tout en protégeant le vôtre, avec un système de pièces aux rangs.",
+        en: "Reproduction of the turn-based strategy game. Challenge your opponent by capturing their flag while protecting yours, with a ranked pieces system.",
+      },
+      tags: ["C++"],
+      link: {
+        href: "https://github.com/EthanS0107/stratego",
+        targetBlank: true,
+        label: { fr: "Voir le code", en: "View code" },
+      },
+      images: [],
     },
   ],
 };
