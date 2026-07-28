@@ -221,10 +221,9 @@ window.portfolioProjectsConfig = {
     },*/
     {
       context: {
-        fr: "Professionnel : En cours",
-        en: "Professional: In progress",
+        fr: "Professionnel",
+        en: "Professional",
       },
-      contextClassName: "badge-wip",
       title: { fr: "Valois Nettoyage", en: "Valois Cleaning" },
       description: {
         fr: "Développement d'un site web pour une entreprise de nettoyage, présentant leurs services et permettant aux clients de les contacter facilement.",
